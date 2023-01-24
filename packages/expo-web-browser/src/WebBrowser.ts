@@ -368,8 +368,11 @@ function _onAppStateChangeAndroid(state: AppStateStatus) {
     return;
   }
 
+  if (state === AppState.currentState) {
+    return;
+  }
   if (state === 'active' && _onWebBrowserCloseAndroid) {
-    _onWebBrowserCloseAndroid();
+    setTimeout(()=>_onWebBrowserCloseAndroid(), 0);
   }
 }
 
